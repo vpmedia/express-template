@@ -1,0 +1,86 @@
+{
+  "name": "@vpmedia/express-template",
+  "version": "1.0.0",
+  "description": "Express Template",
+  "author": "Andras Csizmadia <andras@vpmedia.hu> (www.vpmedia.hu)",
+  "license": "UNLICENSED",
+  "private": true,
+  "homepage": "https://github.com/vpmedia/express-template#readme",
+  "bugs": {
+    "url": "https://github.com/vpmedia/express-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vpmedia/express-template.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "bin": {
+    "server": "./src/index.js"
+  },
+  "scripts": {
+    "start": "./src/index.js",
+    "watch": "nodemon",
+    "prebuild": "rm -rf ./build && rm -rf ./lib",
+    "build": "rollup -c",
+    "postbuild": "chmod +x ./build/server.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
+    "format": "prettier --write \"**/*.{js,ts,json,md}\"",
+    "lint": "eslint \"**/*.{js,ts}\"",
+    "lint-fix": "eslint \"**/*.{js,ts}\" --fix",
+    "lint-staged": "lint-staged",
+    "typecheck": "tsc",
+    "prepack": "npm run build",
+    "prepare": "husky install || true"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.6.0",
+    "@opentelemetry/exporter-metrics-otlp-grpc": "^0.43.0",
+    "@opentelemetry/exporter-metrics-otlp-proto": "^0.43.0",
+    "@opentelemetry/exporter-trace-otlp-grpc": "^0.43.0",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.43.0",
+    "@opentelemetry/instrumentation-express": "^0.33.1",
+    "@opentelemetry/instrumentation-http": "^0.43.0",
+    "@opentelemetry/resources": "^1.17.0",
+    "@opentelemetry/sdk-metrics": "^1.17.0",
+    "@opentelemetry/sdk-node": "^0.43.0",
+    "@opentelemetry/sdk-trace-node": "^1.17.0",
+    "@opentelemetry/semantic-conventions": "^1.17.0",
+    "@sentry/node": "^7.73.0",
+    "compression": "^1.7.4",
+    "connect-redis": "^7.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "redis": "^4.6.10",
+    "socket.io": "^4.7.2",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.5",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jest": "^27.4.2",
+    "eslint-plugin-jsdoc": "^46.8.2",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "jest": "^29.7.0",
+    "lint-staged": "^14.0.1",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
+    "rollup": "^4.0.2",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=18.0.0"
+  }
+}

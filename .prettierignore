@@ -1,0 +1,13 @@
+#
+# Copyright (c) 2023-present VPMedia
+# author: Andras Csizmadia <andras@vpmedia.hu>
+# see: https://prettier.io/docs/en/ignore.html
+#
+
+.husky/
+build/
+logs/
+node_modules/
+.idea/
+.vscode/
+package-lock.json

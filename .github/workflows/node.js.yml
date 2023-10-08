@@ -1,0 +1,36 @@
+# Copyright (c) 2023-present VPMedia
+# author: Andras Csizmadia <andras@vpmedia.hu>
+# see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+#      https://nodejs.org/en/about/releases/
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Init
+        run: ./cli.sh --ci
+      - name: Lint
+        run: ./cli.sh --lint
+      - name: Test
+        run: ./cli.sh --test
+      - name: Build
+        run: ./cli.sh --build
