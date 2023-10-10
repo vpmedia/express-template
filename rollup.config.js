@@ -1,5 +1,6 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import { readFileSync } from 'node:fs';
 
 // Use import.meta.url to make the path relative to the current source file instead of process.cwd()
@@ -22,6 +23,9 @@ const banner = [
   ` */`,
 ].join('\n');
 
+const external = Object.keys(pkg.dependencies);
+external.push('node_modules');
+
 export default {
   input: 'src/index.js',
   output: [
@@ -33,6 +37,6 @@ export default {
       exports: 'named',
     },
   ],
-  external: Object.keys(pkg.dependencies),
-  plugins: [nodeResolve(), commonjs()],
+  external,
+  plugins: [commonjs(), nodeResolve(), json()],
 };
