@@ -15,10 +15,10 @@ src/
 .eslintrc.json
 .gitattributes
 .gitignore
-.lintstagedrc.json
+lint-staged.config.js
 .npmignore
 .npmrc
 .prettierignore
-.prettierrc.json
+prettier.config.js
 Dockerfile
 jest.config.js
