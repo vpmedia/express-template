@@ -31,7 +31,9 @@
     "lint": "eslint \"**/*.{js,ts}\"",
     "lint-fix": "eslint \"**/*.{js,ts}\" --fix",
     "typecheck": "tsc",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "lefthook:install": "lefthook install",
+    "lefthook:uninstall": "lefthook uninstall"
   },
   "dependencies": {
     "@opentelemetry/api": "^1.6.0",
