@@ -4,7 +4,6 @@
 # see: https://eslint.org/docs/latest/user-guide/configuring/ignoring-code
 #
 
-.husky/
 build/
 logs/
 node_modules/

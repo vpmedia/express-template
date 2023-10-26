@@ -3,7 +3,6 @@
 # see: https://docs.docker.com/engine/reference/builder/#dockerignore-file
 
 .github/
-.husky/
 .idea/
 .vscode/
 build/

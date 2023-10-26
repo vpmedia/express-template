@@ -4,7 +4,6 @@
 # see: https://docs.npmjs.com/cli/v8/using-npm/developers#keeping-files-out-of-your-package
 #
 
-.husky/
 logs/
 node_modules/
 src/
