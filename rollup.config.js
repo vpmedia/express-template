@@ -11,7 +11,6 @@ const projectName = 'server';
 const compiled = new Date().toUTCString().replace(/GMT/g, 'UTC');
 
 const banner = [
-  `#!/usr/bin/env node`,
   `/**`,
   ` * ${pkg.name}`,
   ` * @description ${pkg.description}`,
