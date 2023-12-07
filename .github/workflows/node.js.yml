@@ -1,14 +1,10 @@
 # Copyright (c) 2023-present VPMedia
 # author: Andras Csizmadia <andras@vpmedia.hu>
-# see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-#      https://nodejs.org/en/about/releases/
 
 name: Node.js CI
 
 on:
   push:
-    branches: [main]
-  pull_request:
     branches: [main]
 
 jobs:
