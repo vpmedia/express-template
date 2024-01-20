@@ -10,6 +10,7 @@ task_help() {
   echo "--clean = Clean the project"
   echo "--init = Initialize the project after checkout"
   echo "--ci = Install npm packages for CI"
+  echo "--ci-prod = Install npm production packages for CI"
   echo "--update = Update npm packages"
   echo "--docker = Run docker container"
   echo "--start = Run the project in development mode"
@@ -29,7 +30,11 @@ task_init() {
 }
 
 task_ci() {
-  npm ci --no-audit
+  npm ci --no-audit --no-fund
+}
+
+task_ci_prod() {
+  npm ci --no-audit --no-fund --only=production
 }
 
 task_update() {
@@ -77,6 +82,9 @@ case "$1" in
   ;;
   --ci)
   task_ci
+  ;;
+  --ci-prod)
+  task_ci_prod
   ;;
   --update)
   task_update
