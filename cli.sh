@@ -34,7 +34,7 @@ task_ci() {
 }
 
 task_ci_prod() {
-  npm ci --no-audit --no-fund --only=production
+  npm ci --no-audit --no-fund --omit=dev
 }
 
 task_update() {
