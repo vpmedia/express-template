@@ -9,11 +9,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:import/recommended",
-    "plugin:jsdoc/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:import/recommended", "plugin:jsdoc/recommended"],
   "settings": {
     "import/resolver": {
       "node": {
