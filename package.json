@@ -28,8 +28,8 @@
     "postbuild": "chmod +x ./build/server.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
     "format": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json,md,css}\"",
-    "lint": "eslint \"**/*.{js,ts}\"",
-    "lint-fix": "eslint \"**/*.{js,ts}\" --fix",
+    "lint": "eslint \"**/*.{js,jsx}\"",
+    "lint-fix": "eslint \"**/*.{js,jsx}\" --fix",
     "typecheck": "tsc",
     "prepack": "npm run build",
     "lefthook:install": "lefthook install",
@@ -66,6 +66,7 @@
     "winston": "^3.11.0"
   },
   "devDependencies": {
+    "@eslint/js": "^8.57.0",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/jest": "^29.5.12",
@@ -73,6 +74,9 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest": "^27.9.0",
     "eslint-plugin-jsdoc": "^48.2.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-unicorn": "^51.0.1",
+    "globals": "^14.0.0",
     "jest": "^29.7.0",
     "lefthook": "^1.6.1",
     "nodemon": "^3.1.0",
