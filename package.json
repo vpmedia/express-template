@@ -49,7 +49,7 @@
     "@opentelemetry/sdk-trace-node": "^1.24.0",
     "@opentelemetry/semantic-conventions": "^1.24.0",
     "@rollup/plugin-json": "^6.1.0",
-    "@sentry/node": "^7.116.0",
+    "@sentry/node": "^8.7.0",
     "@wesleytodd/openapi": "^1.0.0",
     "compression": "^1.7.4",
     "connect-redis": "^7.1.1",
