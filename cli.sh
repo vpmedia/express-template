@@ -47,10 +47,12 @@ task_docker() {
 }
 
 task_start() {
+  npm run prisma:generate
   npm run start
 }
 
 task_build() {
+  npm run prisma:generate
   npm run build
 }
 

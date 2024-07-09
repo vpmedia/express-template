@@ -12,7 +12,7 @@ import {
   NodeTracerProvider,
   SimpleSpanProcessor,
 } from '@opentelemetry/sdk-trace-node';
-import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+import { SEMRESATTRS_CONTAINER_ID, SEMRESATTRS_DEPLOYMENT_ENVIRONMENT, SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_VERSION } from '@opentelemetry/semantic-conventions';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -32,10 +32,10 @@ if (OTEL_DEBUG) {
 }
 
 const resource = new Resource({
-  [SemanticResourceAttributes.SERVICE_NAME]: 'express-template',
-  [SemanticResourceAttributes.SERVICE_VERSION]: '1.0.0',
-  [SemanticResourceAttributes.DEPLOYMENT_ENVIRONMENT]: environment,
-  [SemanticResourceAttributes.CONTAINER_ID]: hostname,
+  [SEMRESATTRS_SERVICE_NAME]: 'express-template',
+  [SEMRESATTRS_SERVICE_VERSION]: '1.0.0',
+  [SEMRESATTRS_DEPLOYMENT_ENVIRONMENT]: environment,
+  [SEMRESATTRS_CONTAINER_ID]: hostname,
 });
 
 export const traceProvider = new NodeTracerProvider({ resource });

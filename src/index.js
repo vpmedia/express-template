@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-import { metricProvider, traceProvider } from './core/opentelemetry.js';
 import * as Sentry from '@sentry/node';
+import { PrismaClient } from '@prisma/client';
 import compression from 'compression';
 import RedisStore from 'connect-redis';
 import cors from 'cors';
+import * as dotenv from 'dotenv';
 import express from 'express';
 import session from 'express-session';
 import helmet from 'helmet';
@@ -13,11 +14,16 @@ import { v4 as uuidv4 } from 'uuid';
 import logRequest from './core/logRequest.js';
 import logger from './core/logger.js';
 
+dotenv.config();
+
+// db
+const prismaClient = new PrismaClient();
+
 // app
-const environment = process.env.NODE_ENV;
 const app = express();
-app.locals.traceProvider = traceProvider;
-app.locals.metricProvider = metricProvider;
+// app.locals.traceProvider = traceProvider;
+// app.locals.metricProvider = metricProvider;
+app.locals.db = prismaClient;
 app.disable('X-Powered-By'); // disable server signature
 app.use(express.json()); // request parser
 app.use(compression()); // response compression
@@ -31,7 +37,7 @@ const sessionConfig = {
   resave: false,
   cookie: {},
 };
-if (environment === 'production') {
+if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1);
   sessionConfig.cookie.secure = true;
   const redisClient = createClient({ legacyMode: false });
@@ -39,14 +45,6 @@ if (environment === 'production') {
   sessionConfig.store = new RedisStore({ client: redisClient });
 }
 app.use(session(sessionConfig));
-if (environment === 'production') {
-  Sentry.init({
-    dsn: process.env.SENTRY_DSN,
-    environment,
-  });
-  app.use(Sentry.Handlers.requestHandler());
-  app.use(Sentry.Handlers.tracingHandler());
-}
 
 app.use((req, res, next) => {
   const requestId = req.header('X-Request-Id') || uuidv4();
@@ -76,9 +74,7 @@ app.post('/api/init', (req, res) => {
 });
 
 // sentry middleware error handler
-if (environment === 'production') {
-  app.use(Sentry.Handlers.errorHandler());
-}
+Sentry.setupExpressErrorHandler(app);
 
 // start server
 app.listen(process.env.EXPRESS_PORT, () => {
