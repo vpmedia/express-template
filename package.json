@@ -86,7 +86,7 @@
     "@types/uuid": "^10.0.0",
     "dotenv-cli": "^7.4.2",
     "eslint": "^9.6.0",
-    "eslint-plugin-jsdoc": "^48.5.2",
+    "eslint-plugin-jsdoc": "^48.6.0",
     "eslint-plugin-n": "^17.9.0",
     "eslint-plugin-unicorn": "^54.0.0",
     "globals": "^15.8.0",
