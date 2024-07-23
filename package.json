@@ -96,7 +96,7 @@
     "prettier": "^3.3.3",
     "prisma": "^5.17.0",
     "rollup": "^4.19.0",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "engines": {
     "npm": ">=8.0.0",
